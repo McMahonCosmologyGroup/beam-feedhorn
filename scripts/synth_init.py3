@@ -15,7 +15,7 @@ from holog_daq import synth3
 N = 18
 
 F_OFFSET = 5  # in MHz
-F = int(180.0 * 1000.0 / N)  # MHz
+F = int(210.0 * 1000.0 / N)  # MHz
 
 # Contact the synthesizer USB ports
 LOs = tuple(usb.core.find(find_all=True, idVendor=0x10C4, idProduct=0x8468))
@@ -40,6 +40,7 @@ while ii < np.size(LOs):
 
 # Set the frequency of the RF output, in MHz. (device, state).
 # You must have the device's RF output in state (1) before doing this.
-synth3.set_RF_output(0, 0, LOs)  # Turn on the RF output. (device,state)
-synth3.set_RF_output(1, 0, LOs)
+synth3.set_RF_output(0, 1, LOs)  # Turn on the RF output. (device,state)
+synth3.set_RF_output(1, 1, LOs)
 synth3.set_f(0, F, LOs)
+synth3.set_f(1, F+F_OFFSET, LOs)

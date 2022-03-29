@@ -1,5 +1,5 @@
 """
-This script demonstrates grabbing data from a wideband Pocket correlator and plotting it using numpy/pylab. 
+This script demonstrates grabbing data from a wideband Pocket correlator and plotting it using numpy/pylab.
 Designed for use with TUT4 at the 2009 CASPER workshop.
 
 Author: Jason Manley, August 2009.
@@ -19,15 +19,14 @@ import time
 import casperfpga
 import holog_daq
 import matplotlib
+matplotlib.use("TkAgg")  # do this before importing pylab
+
 import matplotlib.pyplot as plt
 import numpy as np
 import serial
 import usb.core
 import usb.util
 from holog_daq import fpga_daq3, poco3, synth3
-
-matplotlib.use("TkAgg")  # do this before importing pylab
-
 
 is_py3 = int(platform.python_version_tuple()[0]) == 3
 
@@ -47,8 +46,7 @@ f_max_MHz = f_clock_MHz / 4
 katcp_port = 7147
 N = 18
 F_OFFSET = 5  # 5*f_clock_MHz/500 #MHz
-F = int(190.0 * 1000.0 / N)  # MHz
-
+F = int(225 * 1000.0 / N)  # MHz
 
 def drawDataCallback(baseline):
 
